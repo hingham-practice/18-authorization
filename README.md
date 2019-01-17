@@ -6,10 +6,9 @@
 ### Author: Hannah Ingham
 
 ### Links and Resources
-* [repo]
-* [travis]
-* [back-end](http://xyz.com) (when applicable)
-* [front-end](http://xyz.com) (when applicable)
+* [repo]https://github.com/hingham/18-authorization
+* [travis][![Build Status](https://www.travis-ci.com/hingham/18-authorization.svg?branch=master)](https://www.travis-ci.com/hingham/18-authorization)
+* [back-end] https://authorization-hi.herokuapp.com/ 
 
 ### Modules: Middleware.js; router.js; users-model.js
 
@@ -46,4 +45,6 @@ Automatic signout: User will be automatically signed out and asked to login agai
 * What assertions need to be / should be made?
 
 #### UML
-Link to an image of the UML for your application and response to events
+![image](./auth-server/assets/authorize-uml.JPG)
+
+
