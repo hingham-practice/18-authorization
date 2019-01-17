@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const SINGLE_USE_TOKENS = !!process.env.SINGLE_USE_TOKENS;
-const TOKEN_EXPIRE = process.env.TOKEN_LIFETIME || '5m';
+// const SINGLE_USE_TOKENS = !!process.env.SINGLE_USE_TOKENS;
+const TOKEN_EXPIRE = process.env.TOKEN_LIFETIME || '1m';
 const SECRET = process.env.SECRET || 'foobar';
 
 const usedTokens = new Set();
@@ -13,6 +13,7 @@ const usedTokens = new Set();
 const users = new mongoose.Schema({
   username: {type:String, required:true, unique:true},
   password: {type:String, required:true},
+  signin_time: {type:Number, required:true},
   email: {type: String},
   role: {type: String, default:'user', enum: ['admin','editor','user']},
 });
@@ -25,6 +26,7 @@ users.pre('save', function(next) {
     })
     .catch(console.error);
 });
+
 
 users.statics.createFromOauth = function(email) {
 
@@ -44,6 +46,23 @@ users.statics.createFromOauth = function(email) {
     });
 
 };
+
+users.statics.authenticateToken = function(token){
+  let parsedToken = jwt.verify(token, process.env.SECRET, function(err, decoded){
+    if(err){
+      console.log('could not verify token');
+      return false;
+    }
+    else{
+      console.log('parsed token', decoded.id);
+      return decoded;
+    }
+  });
+
+  let query = {_id:parsedToken.id};
+  return this.findOne(query);
+
+}
 
 users.statics.authenticateBasic = function(auth) {
   let query = {username:auth.username};
@@ -67,6 +86,11 @@ users.methods.generateToken = function(type) {
   
   return jwt.sign(token, SECRET);
 };
+
+users.methods.updateTime= function(){
+  this.signin_time = Date.now();
+  this.save();
+}
 
 users.methods.generateKey = function() {
   return this.generateToken('key');

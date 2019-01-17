@@ -1,42 +1,45 @@
 ![CF](http://i.imgur.com/7v5ASc8.png) LAB
 =================================================
 
-## Project Name
+## Project Name: JWT Security
 
-### Author: Student/Group Name
+### Author: Hannah Ingham
 
 ### Links and Resources
-* [repo](http://xyz.com)
-* [travis](http://xyz.com)
+* [repo]
+* [travis]
 * [back-end](http://xyz.com) (when applicable)
 * [front-end](http://xyz.com) (when applicable)
 
-#### Documentation
-* [swagger](http://xyz.com) (API assignments only)
-* [jsdoc](http://xyz.com) (All assignments)
+### Modules: Middleware.js; router.js; users-model.js
 
-### Modules
-#### `modulename.js`
-##### Exported Values and Methods
+##### Exported Values and Methods: authRouter, middleware.js
 
 ###### `foo(thing) -> string`
-Usage Notes or examples
+npm start
+signup: echo '{"username":"example","password":"example-password"}' | http post :4000/signup
+Basic singin: signin: http :4000/signin -a example:example-password
+Bearr signin: signin: http :4000/testing "Authorization:Bearer ENTER TOKEN HERE"
 
-###### `bar(array) -> array`
-Usage Notes or examples
+Automatic signout: User will be automatically signed out and asked to login again after 5 seconds
+
 
 ### Setup
 #### `.env` requirements
-* `PORT` - Port Number
-* `MONGODB_URI` - URL to the running mongo instance/db
+* `PORT` - 4000
+* `MONGODB_URI` - mongodb://localhost:27017/users
+* `SECRET` - string for mongo secret
 
 #### Running the app
 * `npm start`
-* Endpoint: `/foo/bar/`
-  * Returns a JSON object with abc in it.
-* Endpoint: `/bing/zing/`
-  * Returns a JSON object with xyz in it.
-  
+* Endpoint: `/signin`
+  * Enters user in the mongo database
+* Endpoint: `/singin`
+  * Signs in a user with correct credentials
+* Endpoint: `/testing`
+  * Signs in a user with bearer authorization (with a token)
+ 
+
 #### Tests
 * How do you run tests?
 * What assertions were made?
