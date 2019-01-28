@@ -6,9 +6,9 @@
 ### Author: Hannah Ingham
 
 ### Links and Resources
-* [repo]https://github.com/hingham/18-authorization
-* [travis][![Build Status](https://www.travis-ci.com/hingham/18-authorization.svg?branch=master)](https://www.travis-ci.com/hingham/18-authorization)
-* [back-end] https://authorization-hi.herokuapp.com/ 
+* [repo](https://github.com/hingham/18-authorization)
+* [![Build Status](https://www.travis-ci.com/hingham/18-authorization.svg?branch=master)](https://www.travis-ci.com/hingham/18-authorization)
+* [back-end](https://authorization-hi.herokuapp.com/) 
 
 ### Modules: Middleware.js; router.js; users-model.js
 
