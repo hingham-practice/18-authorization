@@ -16,9 +16,9 @@
 
 ###### `foo(thing) -> string`
 npm start
-signup: echo `{"username":"example","password":"example-password"}' | http post :4000/signup`
-Basic singin: `signin: http :4000/signin -a example:example-password`
-Bearr signin: `signin: http :4000/testing "Authorization:Bearer ENTER-TOKEN-HERE`
+- signup: echo `{"username":"example","password":"example-password"}' | http post :4000/signup`
+- Basic singin: `signin: http :4000/signin -a example:example-password`
+- Bearr signin: `signin: http :4000/testing "Authorization:Bearer ENTER-TOKEN-HERE`
 
 Automatic signout: User will be automatically signed out and asked to login again after 5 seconds
 
